@@ -57,4 +57,4 @@ jobs:
           tf_actions_subcommand: plan
           tf_actions_working_dir: ./gcp
           tf_actions_comment: true
-          args: '-var="gcp_billing_account=${{ secrets.GCP_BILLING_ACCOUNT_ID }}" -var="gcp_org_id=${{ secrets.GCP_ORG_ID }}"'
+          args: '-var=gcp_billing_account=${{ secrets.GCP_BILLING_ACCOUNT_ID }} -var=gcp_org_id=${{ secrets.GCP_ORG_ID }}'
