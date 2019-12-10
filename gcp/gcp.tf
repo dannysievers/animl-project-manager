@@ -1,7 +1,7 @@
 # GCP projects being used for AniML projects
 
 module "project" {
-#   source = "git::https://github.com/dannysievers/gcp-project.git//project"
+  source = "git::https://github.com/dannysievers/gcp-project.git//project"
 
 #   project_name       = "go-api-gke"
 #   billing_account_id = var.gcp_billing_account_id
