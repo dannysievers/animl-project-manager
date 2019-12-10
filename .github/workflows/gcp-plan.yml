@@ -7,43 +7,54 @@ on:
       - 'gcp/*'
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
 jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
+      - name: Checkout
         uses: actions/checkout@master
-      - name: 'Terraform Format'
+
+      - name: Setup GCP Credentials
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '270.0.0'
+          service_account_email: ${{ secrets.GCP_SA_EMAIL }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Terraform Format
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'fmt'
-          tf_actions_working_dir: './gcp'
+          tf_actions_subcommand: fmt
+          tf_actions_working_dir: ./gcp
           tf_actions_comment: true
 
-      - name: 'Terraform Init'
+      - name: Terraform Init
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'init'
-          tf_actions_working_dir: './gcp'
+          tf_actions_subcommand: init
+          tf_actions_working_dir: ./gcp
           tf_actions_comment: true
           args: '-backend-config="bucket=animl-project-manager" -backend-config="prefix=terraform/state/projects/gcp" -backend-config="auth_token=${{ secrets.GCP_AUTH_TOKEN }}"'
 
-      - name: 'Terraform Validate'
+      - name: Terraform Validate
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'validate'
-          tf_actions_working_dir: './gcp'
+          tf_actions_subcommand: validate
+          tf_actions_working_dir: ./gcp
           tf_actions_comment: true
+          args: '-var="gcp_billing_account=${{ secrets.GCP_BILLING_ACCOUNT_ID }}" -var="gcp_org_id=${{ secrets.GCP_ORG_ID }}"'
 
-      - name: 'Terraform Plan'
+      - name: Terraform Plan
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'plan'
-          tf_actions_working_dir: './gcp'
+          tf_actions_subcommand: plan
+          tf_actions_working_dir: ./gcp
           tf_actions_comment: true
