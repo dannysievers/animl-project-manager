@@ -11,11 +11,11 @@ variable "gcp_org_id" {
 }
 
 variable "gcp_region" {
-  type = string
+  type    = string
   default = "us-central1"
 }
 
 variable "gcp_zone" {
-  type = string
+  type    = string
   default = "us-central1-c"
 }

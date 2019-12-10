@@ -1,7 +1,14 @@
-# name: Azure Subscription Creation
-# on:
-#   push:
-#     branches:
-#       - master
-#     paths:
-#       - 'azure/*'
+name: Azure Subscription Creation
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'azure/*'
+jobs:
+  echo:
+    name: Echo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Placeholder
+        run: echo 'Will be Azure sub creation'

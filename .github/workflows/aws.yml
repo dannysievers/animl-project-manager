@@ -1,8 +1,14 @@
-# name: AWS Organization Creation
-# on:
-#   push:
-#     branches:
-#       - master
-#     paths:
-#       - 'aws/*'
-
+name: AWS Resource Group Creation
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'aws/*'
+jobs:
+  echo:
+    name: Echo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Placeholder
+        run: echo 'Will be AWS rg creation'
