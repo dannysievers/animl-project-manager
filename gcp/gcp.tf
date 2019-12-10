@@ -1,5 +1,4 @@
 # GCP projects being used for AniML projects
-
 module "project" {
   source = "git::https://github.com/dannysievers/gcp-project.git//project"
 
