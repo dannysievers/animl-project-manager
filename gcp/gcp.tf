@@ -1,6 +1,6 @@
 # GCP projects being used for AniML projects
 
-# module "project" {
+module "project" {
 #   source = "git::https://github.com/dannysievers/gcp-project.git//project"
 
 #   project_name       = "go-api-gke"
@@ -16,4 +16,4 @@
 #     "containerregistry.googleapis.com",
 #     "containerscanning.googleapis.com"
 #   ]
-# }
+}
