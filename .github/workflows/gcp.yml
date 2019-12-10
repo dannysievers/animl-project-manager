@@ -5,3 +5,10 @@ on:
       - master
     paths:
       - 'gcp/*'
+jobs:
+  echo:
+    name: Echo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Placeholder
+        run: echo 'Will be GCP project creation'
