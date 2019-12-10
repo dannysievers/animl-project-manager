@@ -1,2 +1,3 @@
-# gcp-projects
-Terraform to track state of projects in GCP
+# AniML Project Manager
+
+Automated Terraform workflows to create and manage projects across GCP, AWS, and Azure.
