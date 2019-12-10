@@ -1,7 +1,7 @@
-# name: GCP Project Creation
-# on:
-#   push:
-#     branches:
-#       - master
-#     paths:
-#       - 'gcp/*'
+name: GCP Project Creation
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'gcp/*'

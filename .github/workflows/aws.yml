@@ -1,8 +1,8 @@
-# name: AWS Organization Creation
-# on:
-#   push:
-#     branches:
-#       - master
-#     paths:
-#       - 'aws/*'
+name: AWS Organization Creation
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'aws/*'
 
