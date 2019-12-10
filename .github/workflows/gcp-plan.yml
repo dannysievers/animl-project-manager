@@ -8,7 +8,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GOOGLE_PROJECT: ${{ secrets.GOOGLE_PROJECT }}
-  GOOGLE_CLOUD_KEYFILE_JSON: ${{ secrets.GOOGLE_CLOUD_KEYFILE_JSON }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
 jobs:
   terraform:
@@ -40,7 +40,7 @@ jobs:
           tf_actions_subcommand: init
           tf_actions_working_dir: ./gcp
           tf_actions_comment: true
-          args: '-backend-config="bucket=animl-project-manager" -backend-config="prefix=terraform/state/projects/gcp" -backend-config="credentials=$GOOGLE_CLOUD_KEYFILE_JSON"'
+          args: '-backend-config="bucket=animl-project-manager" -backend-config="prefix=terraform/state/projects/gcp"'
 
       - name: Terraform Validate
         uses: hashicorp/terraform-github-actions@master
